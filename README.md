@@ -1,6 +1,6 @@
 ## Netbeans IDE
 
-This is a Docker image that lets you run Netbeans IDE without the need to install it.
+This is a Docker image that lets you run Netbeans IDE (Java EE bundle) without the need to install it.
 
 ### Mac OSX
 

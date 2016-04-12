@@ -2,6 +2,8 @@
 
 This is a Docker image that lets you run Netbeans IDE (Java EE bundle) without the need to install it.
 
+## Running the container
+
 ### Mac OSX
 
     brew install socat
@@ -25,4 +27,13 @@ For example:
     docker run -e DISPLAY=$(ifconfig vboxnet0 | grep 'inet ' | cut -d' ' -f2):0 \
                -v `pwd`/.netbeans-docker:/home/developer/.netbeans \
                -it bbania/netbeans:8.1
+
+## Build from this repo
+
+### MAC OSX
+
+Run the following to build the image:
+
+    docker build --build-arg DISPLAY=$(ifconfig vboxnet0 | grep 'inet ' | cut -d' ' -f2):0 \
+                 -t <username>/netbeans:8.1 .
 

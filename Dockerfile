@@ -19,5 +19,5 @@ USER developer
 ENV HOME /home/developer
 WORKDIR /home/developer
 
-CMD [ "/usr/local/netbeans-8.1/bin/netbeans", "--jdkhome", "/usr/java/jdk1.8.0_77/" ]
+CMD [ "/usr/local/netbeans-8.1/bin/netbeans" ]
 

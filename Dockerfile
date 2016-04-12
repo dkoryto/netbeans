@@ -8,6 +8,7 @@ RUN chmod +x netbeans-8.0.2-javaee-linux.sh \
 RUN yum clean all \
     && rm -rf netbeans*
 RUN useradd developer \
+    && mkdir -p /etc/sudoers.d/ \
     && echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer \
     && chmod 0440 /etc/sudoers.d/developer
 

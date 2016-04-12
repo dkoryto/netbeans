@@ -2,7 +2,7 @@
 
 This is a Docker image that lets you run Netbeans IDE without the need to install it.
 
-## Mac OSX
+### Mac OSX
 
     brew install socat
     brew cask install xquartz
@@ -15,4 +15,14 @@ In XQuartz start socat
 In another terminal window
 
     docker run -e DISPLAY=$(ifconfig vboxnet0 | grep 'inet ' | cut -d' ' -f2):0 -it bbania/netbeans:8.1
- 
+
+### Persistent data
+
+NetBeans plugins are kept on `$HOME/.netbeans` inside the container, so if you want to keep them around after you close it, you'll need to share it with your host.
+
+For example:
+
+    docker run -e DISPLAY=$(ifconfig vboxnet0 | grep 'inet ' | cut -d' ' -f2):0 \
+               -v `pwd`/.netbeans-docker:/home/developer/.netbeans \
+               -it bbania/netbeans:8.1
+

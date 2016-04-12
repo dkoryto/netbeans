@@ -22,6 +22,5 @@ RUN wget -q http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201
     unzip ~/netbeans.zip -q -d ~ && \
     rm ~/netbeans.zip
 
-WORKDIR /data
-CMD [ "~/netbeans/bin/netbeans", "--jdkhome", "/opt/jdk" ]
+CMD [ "/home/developer/netbeans/bin/netbeans", "--jdkhome", "/opt/jdk" ]
 

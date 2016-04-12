@@ -1,13 +1,19 @@
 FROM bbania/jdk:8
 MAINTAINER "Bart Bania" <contact@bartbania.com>
 
-WORKDIR /opt
+RUN yum -q -y install libXext libXrender libXtst \
+    && wget -q http://download.netbeans.org/netbeans/8.1/final/bundles/netbeans-8.1-javaee-linux.sh
+RUN chmod +x netbeans-8.1-javaee-linux.sh \
+    && ./netbeans-8.1-javaee-linux.sh --silent
+RUN yum clean all \
+    && rm -rf netbeans*
+RUN useradd developer \
+    && echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer \
+    && chmod 0440 /etc/sudoers.d/developer
 
-RUN yum -q -y install unzip libXext \
-    && wget -q http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201510222201-javaee.zip \
-    && unzip -q netbeans-8.1-201510222201-javaee.zip -d /opt \
-    && yum clean all \
-    && rm -rf netbeans-8.1-201510222201-javaee.zip
+USER developer
+ENV HOME /home/developer
+WORKDIR /home/developer
 
-ENV PATH /opt/netbeans/bin:$PATH
+CMD [ "/usr/local/netbeans-8.1/bin/netbeans", "--jdkhome", "/usr/java/jdk1.8.0_77/" ]
 

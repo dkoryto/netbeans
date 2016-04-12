@@ -1,4 +1,4 @@
-## Netbeans IDE
+## Netbeans IDE 8.1
 
 This is a Docker image that lets you run Netbeans IDE (Java EE bundle) without the need to install it.
 

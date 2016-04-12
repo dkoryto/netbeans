@@ -7,7 +7,7 @@ ENV DISPLAY ${DISPLAY}
 RUN yum -q -y install libXext libXrender libXtst \
     && wget -q http://download.netbeans.org/netbeans/8.0.2/final/bundles/netbeans-8.0.2-javaee-linux.sh
 RUN chmod +x netbeans-8.0.2-javaee-linux.sh \
-    && ./netbeans-8.0.2-javaee-linux.sh --silent
+    && ./netbeans-8.0.2-javaee-linux.sh
 RUN yum clean all \
     && rm -rf netbeans*
 RUN useradd developer \
@@ -20,3 +20,4 @@ ENV HOME /home/developer
 WORKDIR /home/developer
 
 CMD [ "/usr/local/netbeans-8.0.2/bin/netbeans" ]
+

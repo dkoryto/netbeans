@@ -22,7 +22,7 @@ In XQuartz start socat
 
 In another terminal window
 
-    docker run -e DISPLAY=$(ifconfig vboxnet0 | grep 'inet ' | cut -d' ' -f2):0 -it bbania/netbeans:<docker_tag>
+    docker run -e DISPLAY=$(ifconfig en0 | grep 'inet ' | cut -d' ' -f2):0 -it bbania/netbeans:<docker_tag>
 
 ### Persistent data
 
@@ -30,7 +30,7 @@ NetBeans plugins are kept on `$HOME/.netbeans` inside the container, so if you w
 
 For example:
 
-    docker run -e DISPLAY=$(ifconfig vboxnet0 | grep 'inet ' | cut -d' ' -f2):0 \
+    docker run -e DISPLAY=$(ifconfig en0 | grep 'inet ' | cut -d' ' -f2):0 \
                -v `pwd`/.netbeans-docker:/home/developer/.netbeans \
                -it bbania/netbeans:<docker_tag>
 
@@ -40,6 +40,6 @@ For example:
 
 Run the following to build the image:
 
-    docker build --build-arg DISPLAY=$(ifconfig vboxnet0 | grep 'inet ' | cut -d' ' -f2):0 \
+    docker build --build-arg DISPLAY=$(ifconfig en0 | grep 'inet ' | cut -d' ' -f2):0 \
                  -t <username>/netbeans:<docker_tag> .
 

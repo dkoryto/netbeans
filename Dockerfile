@@ -18,8 +18,8 @@ RUN adduser -D developer && \
 
 USER developer
 
-RUN wget -q http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201510222201-javaee.zip -O ~/netbeans.zip && \
-    unzip ~/netbeans.zip -q -d ~ && \
+RUN wget http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201510222201.zip -O ~/netbeans.zip && \
+    unzip ~/netbeans.zip -d ~ && \
     rm ~/netbeans.zip
 
 CMD [ "/home/developer/netbeans/bin/netbeans", "--jdkhome", "/opt/jdk" ]
